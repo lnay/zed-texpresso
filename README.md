@@ -1,0 +1,21 @@
+# TeXpresso extension for Zed
+
+## Setup
+
+1. Build TeXpresso from this branch: https://github.com/lnay/texpresso/tree/utf-8
+2. Install the associated language server: `npm install -g texpresso-lsp`
+3. Install this repo as a [dev extension in Zed](https://zed.dev/docs/extensions/developing-extensions#developing-an-extension-locally), or from the extensions tab when available (maybe soon)
+4. Add to your settings.json file (global `~/.config/zed/settings.json` or workspace `WORKSPACE/.zed/settings.json`):
+  ```jsonc
+  {
+    "lsp": {
+      "texpresso-lsp": {
+        "initialization_options": {
+          "root_tex": "path/to/main/tex/file" // relative to workspace root, defaults to main.tex
+          "texpresso_path": "path/to/texprosso/binary" // omissable if TeXpresso is in PATH
+        }
+      }
+    }
+
+  }
+  ```

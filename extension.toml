@@ -1,0 +1,11 @@
+id = "texpresso"
+name = "TeXpresso"
+version = "0.0.1-dev"
+schema_version = 1
+authors = ["Luke Naylor <luke.naylr@gmail.com>"]
+description = "Live preview of LaTeX document using TeXpresso. Use alongside the LaTeX extension."
+repository = "https://github.com/lnay/zed-texpresso"
+
+[language_servers.texpresso-lsp]
+name = "TeXpresso-LSP"
+language = "LaTeX"
