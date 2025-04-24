@@ -1,5 +1,22 @@
 # TeXpresso extension for Zed
 
+Use this alongside the LaTeX extension for Zed, but disable the build-on-save in settings:
+```jsonc
+  {
+    "lsp": {
+      "texlab": {
+        "settings": {
+          "texlab": {
+            "build": {
+              "onSave": false
+            }
+          }
+        }
+      }
+    }
+  }
+```
+
 ## Setup
 
 1. Build TeXpresso from this branch: https://github.com/lnay/texpresso/tree/utf-8
@@ -16,6 +33,5 @@
         }
       }
     }
-
   }
   ```
