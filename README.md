@@ -11,7 +11,7 @@
     "lsp": {
       "texpresso-lsp": {
         "initialization_options": {
-          "root_tex": "path/to/main/tex/file" // relative to workspace root, defaults to main.tex
+          "root_tex": "path/to/main/tex/file", // relative to workspace root, defaults to main.tex
           "texpresso_path": "path/to/texprosso/binary" // omissable if TeXpresso is in PATH
         }
       }
