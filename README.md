@@ -29,7 +29,7 @@ Use this alongside the LaTeX extension for Zed, but disable the build-on-save in
       "texpresso-lsp": {
         "initialization_options": {
           "root_tex": "path/to/main/tex/file", // relative to workspace root, defaults to main.tex
-          "texpresso_path": "path/to/texprosso/binary" // omissable if TeXpresso is in PATH
+          "texpresso_path": "path/to/texpresso/binary" // omissable if TeXpresso is in PATH
         }
       }
     }
