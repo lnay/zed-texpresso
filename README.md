@@ -20,9 +20,8 @@ Use this alongside the LaTeX extension for Zed, but disable the build-on-save in
 ## Setup
 
 1. Build TeXpresso from this branch: https://github.com/lnay/texpresso/tree/utf-8
-2. Install the associated language server: `npm install -g texpresso-lsp`
-3. Install this repo as a [dev extension in Zed](https://zed.dev/docs/extensions/developing-extensions#developing-an-extension-locally), or from the extensions tab when available (maybe soon)
-4. Add to your settings.json file (global `~/.config/zed/settings.json` or workspace `WORKSPACE/.zed/settings.json`):
+2. Install this repo as a [dev extension in Zed](https://zed.dev/docs/extensions/developing-extensions#developing-an-extension-locally), or from the extensions tab when available (maybe soon)
+3. Add to your settings.json file (global `~/.config/zed/settings.json` or workspace `WORKSPACE/.zed/settings.json`):
   ```jsonc
   {
     "lsp": {

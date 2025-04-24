@@ -1,3 +1,4 @@
+use std::env;
 use zed_extension_api::{self as zed, serde_json::json};
 
 #[derive(Default)]
@@ -11,15 +12,36 @@ impl zed::Extension for TexpressoExtension {
     fn language_server_command(
         &mut self,
         _language_server_id: &zed::LanguageServerId,
-        worktree: &zed::Worktree,
+        _worktree: &zed::Worktree,
     ) -> zed::Result<zed::Command> {
-        let command = worktree
-            .which("texpresso-lsp")
-            .ok_or("texpresso-lsp not on PATH")?;
-        let args = vec!["--stdio".to_string()];
-        let env = vec![];
+        const PACKAGE_NAME: &str = "texpresso-lsp";
+        const SERVER_PATH: &str = "node_modules/texpresso-lsp/dist/server.js";
 
-        Ok(zed::Command { command, args, env })
+        // FUTURE allow specifying path directly
+
+        let latest_version = zed::npm_package_latest_version(PACKAGE_NAME)?;
+
+        if let Ok(Some(current_version)) = zed::npm_package_installed_version(PACKAGE_NAME) {
+            if latest_version != current_version {
+                zed::npm_install_package(PACKAGE_NAME, latest_version.as_str()).ok();
+            }
+        } else {
+            zed::npm_install_package(PACKAGE_NAME, latest_version.as_str()).ok();
+        }
+
+        Ok(zed::Command {
+            command: zed::node_binary_path()?,
+            args: vec![
+                env::current_dir()
+                    .ok()
+                    .ok_or("Failed to get current directory")?
+                    .join(SERVER_PATH)
+                    .to_string_lossy()
+                    .to_string(),
+                "--stdio".to_string(),
+            ],
+            env: Default::default(),
+        })
     }
 
     fn language_server_initialization_options(
