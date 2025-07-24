@@ -66,6 +66,19 @@ impl zed::Extension for TexpressoExtension {
 
         Ok(Some(init_opts))
     }
+
+    fn language_server_workspace_configuration(
+        &mut self,
+        _language_server_id: &zed_extension_api::LanguageServerId,
+        worktree: &zed_extension_api::Worktree,
+    ) -> zed_extension_api::Result<Option<zed_extension_api::serde_json::Value>> {
+        let config = zed::settings::LspSettings::for_worktree("texpresso-lsp", worktree)
+            .unwrap_or_default()
+            .settings
+            .unwrap_or_default();
+
+        Ok(Some(config))
+    }
 }
 
 zed::register_extension!(TexpressoExtension);
