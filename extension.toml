@@ -1,6 +1,6 @@
 id = "texpresso"
 name = "TeXpresso"
-version = "0.0.1"
+version = "0.0.2"
 schema_version = 1
 authors = ["Luke Naylor <luke.naylr@gmail.com>"]
 description = "Live preview of LaTeX document using TeXpresso. Use alongside the LaTeX extension."
