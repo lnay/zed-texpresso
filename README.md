@@ -1,5 +1,7 @@
 # TeXpresso extension for Zed
 
+https://github.com/user-attachments/assets/477093ea-d44d-4bad-b3da-814a33c859c2
+
 Use this alongside the LaTeX extension for Zed, but disable the build-on-save in settings:
 ```jsonc
   {
