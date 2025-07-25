@@ -31,6 +31,10 @@ Use this alongside the LaTeX extension for Zed, but disable the build-on-save in
         "initialization_options": {
           "root_tex": "path/to/main/tex/file", // relative to workspace root, defaults to main.tex
           "texpresso_path": "path/to/texpresso/binary" // omissable if TeXpresso is in PATH
+          // ^ this path must be to an executable called "texpresso" which must be in the same dir as the executable "texpresso-tonic"
+        },
+        "settings": {
+          "preview_follow_cursor": false, // default true, makes preview constantly follow the position of the cursor
         }
       }
     }
