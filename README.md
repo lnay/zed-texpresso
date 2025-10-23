@@ -1,8 +1,6 @@
 # TeXpresso extension for Zed
 
-> [!WARNING]
-> Linux/Mac only (non windows) for now.
-> Will revisit WSL2 as a possibility in the future.
+Now working in Linux, MacOS, and Windows.
 
 https://github.com/user-attachments/assets/477093ea-d44d-4bad-b3da-814a33c859c2
 
@@ -25,8 +23,8 @@ Use this alongside the LaTeX extension for Zed, but disable the build-on-save in
 
 ## Setup
 
-1. Build TeXpresso from this branch: https://github.com/lnay/texpresso/tree/utf-8
-2. Install this repo as a [dev extension in Zed](https://zed.dev/docs/extensions/developing-extensions#developing-an-extension-locally), or from the extensions tab when available (maybe soon)
+1. Build [TeXpresso](https://github.com/let-def/texpresso)
+2. Install this [extension in Zed](zed://extension/texpresso)
 3. Add to your settings.json file (global `~/.config/zed/settings.json` or workspace `WORKSPACE/.zed/settings.json`):
   ```jsonc
   {
@@ -38,9 +36,27 @@ Use this alongside the LaTeX extension for Zed, but disable the build-on-save in
           // ^ this path must be to an executable called "texpresso" which must be in the same dir as the executable "texpresso-tonic"
         },
         "settings": {
-          "preview_follow_cursor": false, // default true, makes preview constantly follow the position of the cursor
+          "preview_follow_cursor": true, // default true, makes preview constantly follow the position of the cursor
         }
+      },
+      "texlab": {
+        "settings": {
+          "texlab": {
+            "build": {
+              "onSave": false // we will be using texpresso to build
+            }
+          }
+        }
+      }
+    },
+    "languages": {
+      "LaTeX": {
+        "language_servers": ["texpresso-lsp", "texlab", "..."] // in workspaces where you do not want to use texpresso, replace "texpresso-lsp" with "!texpresso-lsp"
       }
     }
   }
   ```
+> [!WARNING]
+> This will work in <abbr title="Windows Subsystem for Linux">WSL</abbr> in Windows.
+> But this means that TeXpresso must be built inside WSL and the workspace must be inside WSL too (not a Windows folder).
+> You can open Zed from the WSL terminal with `zed .`. You may also need to go to the command palette and restart language servers if the preview window does not appear at first.
